@@ -1,3 +1,3 @@
 # simple_shell
 Writing our own Simple Shell
-to develop...
+to develop... David Henao. 
