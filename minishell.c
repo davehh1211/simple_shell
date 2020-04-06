@@ -66,6 +66,7 @@ int main(void)
 		/*Parent process*/
 		else
 		{
+		/*Make the parent wait for any signal from the child*/
 			wait(NULL);
 		}
 
