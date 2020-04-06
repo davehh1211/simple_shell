@@ -19,13 +19,8 @@ char **_flags(char *buffer, ssize_t characters_read)
 		token = strtok(NULL, " ");
 		i++;
 	}
-	if (token == NULL)
-	{
-		continue;
-		exit(0);
-	}
-	
 	flag[i] = NULL;
 	flag[i - 1] = strtok(flag[i - 1], "\n");
-	return(flag);	
+
+	return(flag);
 }

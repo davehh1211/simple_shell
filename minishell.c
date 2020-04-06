@@ -17,20 +17,20 @@ int main(void)
 		/*Printing our prompt*/
 		printf("$ ");
 		buffer = (char *)malloc(n);
-		
+		if (!buffer)
+		{
+			free(buffer);
+			continue;
+		}
 		/*Using getline() to get whatever the user typed*/
 		characters_read = getline(&buffer, &n, stdin);
 		/*Checking is we read the line right*/
 		if (characters_read == -1)
 		{
 			perror("Error: Bad arguments in getline() function");
-			exit(0);
+			exit(EXIT_FAILURE);
 		}
-		if (!buffer)
-		{
-			free(buffer);
-			continue;
-		}
+
 		/*to get into the function flags*/
 		/*token = strtok(buffer, "\n");*/
 
@@ -59,6 +59,7 @@ int main(void)
 			if (execve(argv[0], argv, NULL) == -1)
 			{
 				perror("Error: Execution errorOScar");
+				exit(EXIT_FAILURE);
 			}
 			exit(0);
 		}
