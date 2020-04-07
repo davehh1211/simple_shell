@@ -7,8 +7,8 @@
  */
 int main(void)
 {
-	char *buffer = NULL, **argv = NULL;
-	size_t n = 0;
+	char *buffer = NULL, **args = NULL;
+	size_t n = 0, i = 0;
 	ssize_t characters_read;
 	pid_t pid;
 
@@ -27,41 +27,49 @@ int main(void)
 		/*Checking is we read the line right*/
 		if (characters_read == -1)
 		{
+			free(buffer);
 			perror("Error: Bad arguments in getline() function");
 			exit(EXIT_FAILURE);
 		}
-
-		/*to get into the function flags*/
-		/*token = strtok(buffer, "\n");*/
-
-		/*if (token == NULL)
-		{
-			continue;
-			perror("Error: Error parsing Oscar esta dormido the tokens");
-			exit(EXIT_FAILURE);
-		}*/
 		/* We will start a Child process with Fork */
 		pid = fork();
 		/*to check error forking*/
 		if (pid == -1)
 		{
+			free(buffer);
 			perror("Error: No child process was created");
 			exit(0);
 		}
 		/*Child process*/
 		else if (pid == 0)
 		{
-			argv = malloc(sizeof(char *));
-			*argv = malloc(sizeof(char) * characters_read);
-			if (*argv == NULL)
-				break;
-			argv = _flags(buffer, characters_read);
-			if (execve(argv[0], argv, NULL) == -1)
+			args = malloc(sizeof(char *));
+			*args = malloc(sizeof(char) * characters_read);
+			if (*args == NULL)
 			{
-				perror("Error: Execution errorOScar");
-				exit(EXIT_FAILURE);
+				free(*args);
+				free(args);
+				continue;
 			}
-			exit(0);
+			args = _flags(buffer, characters_read);
+			if (args[0] == '\0')
+			{
+				free(*args);
+				free(args);
+				continue;
+			}
+			else
+			{
+				if (execve(args[0], args, NULL) == -1)
+				{
+					perror("Error: Execution errorOScar");
+					exit(EXIT_FAILURE);
+				}
+				for(i = 0; args[i]; i++)
+					free(args[0]);
+				free(args);
+				exit(0);
+			}
 		}
 		/*Parent process*/
 		else
