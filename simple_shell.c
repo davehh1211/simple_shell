@@ -16,12 +16,7 @@ int main(void)
 	{
 		/*Printing our prompt*/
 		printf("$ ");
-		buffer = (char *)malloc(n);
-		if (!buffer)
-		{
-			free(buffer);
-			continue;
-		}
+
 		/*Using getline() to get whatever the user typed*/
 		characters_read = getline(&buffer, &n, stdin);
 		/*Checking is we read the line right*/
@@ -44,7 +39,24 @@ int main(void)
 		else if (pid == 0)
 		{
 			args = malloc(sizeof(char *));
-			*args = malloc(sizeof(char) * characters_read);
+			if (!args)
+			{
+				free(args);
+				continue;
+			}
+			*(args) = malloc(sizeof(char) * characters_read);
+			if (!*args)
+			{
+				free(*args);
+				free(args);
+				continue;
+			}
+			if (*args[0] == 0x0)
+			{
+				free(*args);
+				free(args);
+				continue;
+			}
 			if (*args == NULL)
 			{
 				free(*args);
@@ -52,17 +64,12 @@ int main(void)
 				continue;
 			}
 			args = _flags(buffer, characters_read);
-			if (args[0] == '\0')
-			{
-				free(*args);
-				free(args);
-				continue;
-			}
+
 			else
 			{
 				if (execve(args[0], args, NULL) == -1)
 				{
-					perror("Error: Execution errorOScar");
+					perror("Error: Execution error");
 					exit(EXIT_FAILURE);
 				}
 				for(i = 0; args[i]; i++)
