@@ -1,29 +1,6 @@
 #include "shellhead.h"
 
 /**
- * count_words - function that
- * counts the words in a string
- * @str_words: the string to be parsed
- * @delimiter: the delimiters
- * Return: int
- */
-int count_words(char *str_words, const char *delimiter)
-{
-	int palabras = 0;
-
-	do {
-		str_words = _strpbrk(str_words, delimiter);
-		/*skip the delimiter*/
-		if(str_words)
-			str_words += _strspn(str_words, delimiter);
-		/*Increment the word counter*/
-		palabras++;
-	} while(str_words && *str_words);
-
-	return (palabras);
-}
-
-/**
  * _strspn - function that
  * gets the length of a prefix substring.
  * this function will count the number of delimiters in our string
