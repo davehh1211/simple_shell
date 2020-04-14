@@ -90,7 +90,7 @@ char *_strcat(char *dest, char *src)
  */
 int _strlen(char *s)
 {
-	int leng;
+	int leng = 0;
 
 	while (*s != '\0')
 	{
