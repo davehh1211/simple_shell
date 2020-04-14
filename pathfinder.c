@@ -18,16 +18,16 @@ char *pathcommand(char **result, char *command)
 	while (*result != NULL)
 	{
 		lencom = _strlen(command);
-		lenre =  _strlen(*result)
+		lenre =  _strlen(*result);
 		pathcomplete = _calloc(lencom + 2 + lenre, sizeof(char));
 		if (pathcomplete == NULL)
 		{
 			perror("Error allocating memory");
 			return (NULL);
 		}
-		_strcat(pathcomplete, *result);
-		_strcat(pathcomplete, "/");
-		_strcat(pathcomplete, command);
+		strcat(pathcomplete, *result);
+		strcat(pathcomplete, "/");
+		strcat(pathcomplete, command);
 
 		ffile = access(pathcomplete, F_OK);
 		if (ffile != -1)
@@ -93,7 +93,7 @@ char **pathgetter(void)
  */
 char *pathfinder(char *command)
 {
-	char **cmdpath = cmdpath = pathgetter(); /*it gets the path*/
+	char **cmdpath = pathgetter(); /*it gets the path*/
 	char *result;
 
 	result = pathcommand(cmdpath, command); /*concat the commmand with the path*/
