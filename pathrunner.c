@@ -31,31 +31,3 @@ int pathrunner(char **arguments)
 		return (0);
 	}
 }
-/**
- * _strchr - Write a function that locates a character in a string
- * @s: the pointer to show
- * @c: the char to locate
- * Return: character compared
- */
-char *_strchr(char *s, int c)
-{
-	unsigned int i = 0;
-	const char *sign;
-
-	sign = s;
-	for (i = 0; *sign != '\0'; i++)
-	{
-		if (*sign == c)
-		{
-			return ((char *)sign);
-		}
-	}
-	if (*sign == c)
-	{
-		return ((char *)sign);
-	}
-	else
-	{
-		return ('\0');
-	}
-}
