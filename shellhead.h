@@ -36,6 +36,7 @@ int pathrunner(char **cmdpath);
 char *pathfinder(char *command);
 char **pathgetter(void);
 char *pathcommand(char **result, char *command);
+int count_dir(char *str);
 /*----string_fucntion*/
 char *_strdup(char *str);
 int _strlen(char *s);
@@ -43,5 +44,6 @@ char *_strcpy(char *dest, char *src);
 /*char *_strcat(char *dest, char *src);*/
 /*char *_strchr(char *s, int c);*/
 char *_getenv(const char *name);
+void envbuilt(void);
 
 #endif
