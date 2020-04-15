@@ -66,8 +66,7 @@ char **pathgetter(void)
 	unsigned int words = 0, i = 0;
 
 	ptrenv = _getenv("PATH");
-	/*if (ptrenv == NULL)
-		return (NULL);*/
+
 	words = count_dir(ptrenv);
 	result = _calloc(words + 1, sizeof(char *));
 	if (result == NULL)
