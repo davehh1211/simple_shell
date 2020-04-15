@@ -22,7 +22,8 @@ int execute(char **cmdpath)
 			{
 				perror("$ Execution error");
 				/*exit(EXIT_FAILURE);*/
-				return (0);
+				free(cmdpath);
+				exit (EXIT_FAILURE);
 			}
 		}
 		else
@@ -33,6 +34,7 @@ int execute(char **cmdpath)
 	else if (pid == -1) /*to check error forking*/
 	{
 		perror("$ No child process was created");
+		free(cmdpath);
 		return (1);
 	}
 	/*Parent process*/
