@@ -1,5 +1,3 @@
-#include "shellhead.h"
-
 /**
  * _getchar - function to read
  * characters form the STDIN_FILENO
@@ -49,20 +47,19 @@ char *_getline(void)
 	{
 		chars_read = _getchar();
 		/*To manage the Ctrl + D command and exit the program*/
-		if (i == 0 && (chars_read == EOF))
+		if (chars_read == EOF)
 		{ free(buffer);
 			exit(EXIT_SUCCESS); }
 		/*User hits enter and handle the spaces followed by a new line*/
-		if (i == 0 && (chars_read == '\n' || chars_read == ' '))
-		{ free(buffer);
-			return (NULL); }
-		/*when EOF replace it with a null character and return.*/
-		if (chars_read == '\n' || chars_read == EOF)
+		else if (chars_read == '\n')
 		{ buffer[i] = '\0';
 			return (buffer); }
 		buffer[i] = chars_read;
+		/*Handle the comments*/
+		if (chars_read == '#')
+			buffer[i] = 0;
 		i++;
-		if ((i >= buffsize) && (chars_read != '\n'))
+		if (i >= buffsize)
 		{
 			buffsize_new = buffsize + BUFF_SIZE;
 			buffer = _realloc(buffer, buffsize, buffsize_new);

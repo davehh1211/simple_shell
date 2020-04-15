@@ -1,5 +1,4 @@
 #include "shellhead.h"
-
 /**
  * _malloc - function that
  * allocates memory using malloc.
@@ -64,7 +63,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 		return (ptr);
 	if (ptr == NULL)
 	{ p2 = (char *)_calloc(new_size, sizeof(char));
-		if(!p2)
+		if (!p2)
 		{ perror("$ Error in memory allocation");
 			return (ptr); }
 		free(ptr);
@@ -74,7 +73,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 		return (NULL); }
 	if (old_size > new_size)
 	{ p2 = (char *)_calloc(new_size, sizeof(char));
-		if(!p2)
+		if (!p2)
 		{ perror("$ Error in memory allocation");
 			return (ptr); }
 		for (i = 0; i < new_size; i++)
@@ -83,7 +82,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 		return (p2); }
 	if (new_size > old_size)
 	{ p2 = (char *)_calloc(new_size, sizeof(char));
-		if(!p2)
+		if (!p2)
 		{ perror("$ Error in memory allocation");
 			return (ptr); }
 		for (i = 0; i < old_size; i++)
