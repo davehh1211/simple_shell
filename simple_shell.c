@@ -18,25 +18,35 @@ void controlc(int s)
 int main(void)
 {
 	char *lineptr = NULL, **args;
-	int status = 0;
+	int status = 1;
 
-	do {
-		/*prints prompt*/
-		signal(SIGINT, controlc);
+	signal(SIGINT, controlc);
+	if (isatty(STDIN_FILENO) != 0)
+	{
+		do {
 			write(STDOUT_FILENO, "$ ", 2);
-
+			lineptr = _getline();
+			if (lineptr == 0)
+			{
+				free(lineptr);
+				continue;
+			}
+			args = tokenizer(lineptr, TOK_DELIMITER);
+			status = execute(args);
+			free(args);
+			free(lineptr);
+			lineptr = NULL;
+		} while (status);
+	}
+	else
+	{
 		lineptr = _getline();
 		if (lineptr == 0)
-		{
 			free(lineptr);
-			continue;
-		}
 		args = tokenizer(lineptr, TOK_DELIMITER);
 		status = execute(args);
 		free(args);
 		free(lineptr);
-		lineptr = NULL;
-	} while (status);
-
+	}
 	return (0);
 }
