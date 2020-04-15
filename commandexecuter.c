@@ -34,8 +34,8 @@ int pathrunner(char **cmdpath)
 	defpath = pathfinder(cmdpath[0]);
 	if (defpath == NULL)
 	{
-		perror("Command not found, type again...");
-		return (0);
+		perror("$ Command not found, type again...");
+		return (1);
 	}
 	else
 	{
@@ -45,9 +45,11 @@ int pathrunner(char **cmdpath)
 		{
 			free(defpath);
 			perror("$ Error in execution");
-			return (0); /*exit(EXIT_FAILURE);*/
+			/*exit(EXIT_FAILURE);*/
+			exit(EXIT_FAILURE);
 		}
 		free(defpath);
-		return (0); /*exit(EXIT_SUCCESS);*/
+		/*exit(EXIT_SUCCESS);*/
+		return (0);
 	}
 }
