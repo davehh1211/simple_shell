@@ -23,6 +23,7 @@ char *pathcommand(char **result, char *command)
 		if (pathcomplete == NULL)
 		{
 			perror("Error allocating memory");
+			free(result);
 			return (NULL);
 		}
 		strcat(pathcomplete, *result);
@@ -65,10 +66,8 @@ char **pathgetter(void)
 	unsigned int words = 0, i = 0;
 
 	ptrenv = _getenv("PATH");
-	/*
-	*if (ptrenv == NULL)
-	*return (NULL);
-	*/
+	/*if (ptrenv == NULL)
+		return (NULL);*/
 	words = count_dir(ptrenv);
 	result = _calloc(words + 1, sizeof(char *));
 	if (result == NULL)
