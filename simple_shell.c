@@ -1,5 +1,13 @@
 #include "shellhead.h"
-
+/**
+ * 
+ * 
+ */
+void controlc(int s)
+{
+	s *= 1;
+	write(1, "\n$ ", 3);
+}
 /**
  * main - main function of
  * program simple_shell
@@ -13,6 +21,7 @@ int main(void)
 	while (status == 0)
 	{
 		/*prints prompt*/
+		signal(SIGINT, controlc);
 		write(STDOUT_FILENO, "$ ", 2);
 
 		lineptr = _getline();
