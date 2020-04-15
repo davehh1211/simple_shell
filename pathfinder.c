@@ -8,7 +8,7 @@
 char *pathcommand(char **result, char *command)
 {
 	char *pathcomplete;
-	int ffile, lencom, lenre;
+	int ffile = 0, lencom = 0, lenre = 0;
 
 	if (command == NULL || result == NULL)
 	{
@@ -62,7 +62,7 @@ int count_dir(char *str)
 char **pathgetter(void)
 {
 	char *ptrenv, *tok, **result;
-	unsigned int words, i;
+	unsigned int words = 0, i = 0;
 
 	ptrenv = _getenv("PATH");
 	/*
@@ -93,9 +93,12 @@ char **pathgetter(void)
  */
 char *pathfinder(char *command)
 {
-	char **cmdpath = pathgetter(); /*it gets the path*/
+	char **cmdpath;
 	char *result;
 
-	result = pathcommand(cmdpath, command); /*concat the commmand with the path*/
+	/*it gets the path*/
+	cmdpath = pathgetter();
+	/*concat the commmand with the path*/
+	result = pathcommand(cmdpath, command);
 	return (result);
 }
