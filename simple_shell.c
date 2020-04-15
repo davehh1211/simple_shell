@@ -1,7 +1,8 @@
 #include "shellhead.h"
 /**
- * 
- * 
+ * controlc - handle to avoid exitting with ctrl+c
+ * @s: signal to be evaluated.
+ * Return: nothing.
  */
 void controlc(int s)
 {
