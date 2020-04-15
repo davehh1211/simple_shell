@@ -1,3 +1,5 @@
+#include "shellhead.h"
+
 /**
  * _getchar - function to read
  * characters form the STDIN_FILENO
