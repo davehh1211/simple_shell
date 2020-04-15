@@ -95,8 +95,7 @@ char *_strpbrk(char *s, const char *accept)
  */
 char *_strchr(char *s, char c)
 {
-	int len, i;
-	len = 0;
+	int len = 0, i = 0;
 
 	/*finding the lenght of the string*/
 	while (s[len] != '\0')
