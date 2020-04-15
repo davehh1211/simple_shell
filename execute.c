@@ -23,7 +23,7 @@ int execute(char **cmdpath)
 				perror("$ Execution error");
 				/*exit(EXIT_FAILURE);*/
 				free(cmdpath);
-				exit (EXIT_FAILURE);
+				exit(EXIT_FAILURE);
 			}
 		}
 		else
