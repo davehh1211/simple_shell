@@ -45,7 +45,7 @@ int pathrunner(char **cmdpath)
 		{
 			free(defpath);
 			perror("$ Error in execution");
-			return (0); /*exit(EXIT_FAILURE);*/	
+			return (0); /*exit(EXIT_FAILURE);*/
 		}
 		free(defpath);
 		return (0); /*exit(EXIT_SUCCESS);*/
