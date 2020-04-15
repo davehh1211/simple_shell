@@ -6,9 +6,8 @@
  */
 char *_getenv(const char *name)
 {
-	char *tok, *s;
+	char *tok, *s, *tmpenv;
 	int i = 0;
-	char *tmpenv;
 	const char *delim = "=";
 
 	i = 0;

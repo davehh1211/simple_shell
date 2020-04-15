@@ -32,9 +32,10 @@ unsigned int _strcspn(char *s, const char *reject);
 char *_strpbrk(char *s, const char *accept);
 char *_strchr(char *s, char c);
 /*---- pathfunctions---*/
-int pathrunner(char **args);
+int pathrunner(char **cmdpath);
 char *pathfinder(char *command);
 char **pathgetter(void);
+char *pathcommand(char **result, char *command);
 /*----string_fucntion*/
 char *_strdup(char *str);
 int _strlen(char *s);

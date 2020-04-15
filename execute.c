@@ -1,23 +1,24 @@
 #include "shellhead.h"
 /**
- * execute - executes the arguments given by the user
- * @arguments: the arguments
+ * execute - executes the cmdpath given by the user
+ * @cmdpath: the cmdpath
  * Return: 0 in success
  */
-int execute(char **arguments)
+int execute(char **cmdpath)
 {
+	int status;
 	pid_t pid;
 
-	if (*arguments == NULL)
+	if (*cmdpath == NULL)
 	{
 		return (1);
 	}
 	pid = fork(); /* We will start a Child process with Fork */
 	if (pid == 0) /*Child process*/
 	{
-		if (_strchr(arguments[0], '/') != NULL)
+		if (_strchr(cmdpath[0], '/') != NULL)
 		{
-			if (execve(arguments[0], arguments, environ) == -1)
+			if (execve(cmdpath[0], cmdpath, environ) == -1)
 			{
 				perror("$ Execution error");
 				/*exit(EXIT_FAILURE);*/
@@ -26,7 +27,7 @@ int execute(char **arguments)
 		}
 		else
 		{
-			return (pathrunner(arguments));
+			return (pathrunner(cmdpath));
 		}
 	}
 	else if (pid == -1) /*to check error forking*/
@@ -37,7 +38,10 @@ int execute(char **arguments)
 	/*Parent process*/
 	else
 	{
-		wait(NULL); /*Make the parent wait for any signal from the child*/
+		/*suspends execution of the parent process*/
+		 /*until a child specified by pid argument has changed state.*/
+		 /*Make the parent wait for any signal from the child*/
+		waitpid(-1, &status, 0);
 	}
-	return (0);
+	return (1);
 }
