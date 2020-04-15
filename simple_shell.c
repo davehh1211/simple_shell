@@ -1,14 +1,5 @@
 #include "shellhead.h"
-/**
- * controlc - handle to avoid exitting with ctrl+c
- * @s: signal to be evaluated.
- * Return: nothing.
- */
-void controlc(int s)
-{
-	s *= 1;
-	write(1, "\n$ ", 3);
-}
+
 /**
  * controlc - handle to avoid exitting with ctrl+c
  * @s: signal to be evaluated.
