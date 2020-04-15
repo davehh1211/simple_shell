@@ -5,10 +5,10 @@
  * @s: signal to be evaluated.
  * Return: nothing.
  */
-void controlc(int s)
+void controlc(int __attribute__ ((unused)) s)
 {
-	s *= 1;
 	write(1, "\n$ ", 3);
+	fflush(stdout);
 }
 /**
  * main - main function of
