@@ -34,7 +34,7 @@ char **tokenizer(char *str, const char *delim)
 }
 
 /**
- * strtok - function that
+ * _strtok - function that
  * splits a string into words.
  * @str: string to be parsed
  * @delimitador: array of delimiters
@@ -46,7 +46,7 @@ char *_strtok(char *str, const char *delimitador)
 	char *token = NULL;
 
 	token = _strtok_r(str, delimitador, &str_holder);
-	return(token);
+	return (token);
 }
 
 /**
@@ -66,15 +66,15 @@ char *_strtok_r(char *str, const char *delim, char **saveptr)
 
 	if (str == '\0')
 		str = *saveptr;
-	/*here we are moving the first pointer, the number of bytes
-	that had a coincidence with the delimiters.*/
+	/*here we are moving the first pointer, the number of bytes*/
+	/*that had a coincidence with the delimiters.*/
 	str += _strspn(str, delim);
-	if(*str != '\0')
+	if (*str != '\0')
 	{
 		/*Here we take the first pointer to a token*/
 		token = str;
-		/*here we are moving the pointer, the number of bytes
-		that didn't match with the delimiters, so we can skip the token*/
+		/*here we are moving the pointer, the number of bytes*/
+		/*that didn't match with the delimiters, so we can skip the token*/
 		str += _strcspn(str, delim);
 		if (*str != '\0')
 		{
@@ -101,11 +101,11 @@ int count_words(char *str_words, const char *delimiter)
 	do {
 		str_words = _strpbrk(str_words, delimiter);
 		/*skip the delimiter*/
-		if(str_words)
+		if (str_words)
 			str_words += _strspn(str_words, delimiter);
 		/*Increment the word counter*/
 		palabras++;
-	} while(str_words && *str_words);
+	} while (str_words && *str_words);
 
 	return (palabras);
 }
