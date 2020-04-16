@@ -13,6 +13,19 @@
 #define TOK_DELIMITER " \n\r\a\t"
 extern char **environ;
 
+char *builtin_str[] = {
+  "cd",
+  "help",
+  "exit"
+  "env"
+};
+
+/*----Builtins----*/
+int dirchanger(char **args);
+int helper(char **args);
+int exit(char **args);
+int envbuilt(char **args);
+/*--------string_readers----*/
 char *_getline(void);
 int _getchar(void);
 char *_getenv(const char *name);
