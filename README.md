@@ -42,15 +42,36 @@ Follow the following instructions to get a copy of the program and run in your l
 ## General Information and contents
 
 |    File    |Function|Description                            			|
-|------------|--------|-------------------------------------------------|
-|Simple_Shell|  main  |The starting point of the program shell			| 
-|            |controlc|handle to avoid exitting with ctrl+c   			|
-|_getline    |_getchar|function to read characters from the STDIN_FILENO|
-|			 |_getline|function to reads a line from the STDIN_FILENO and holds it in a buffer.|
-|built-ins  |
-
-
-
+|-------------------|----------|-------------------------------------------------|
+|Simple_Shell       |  main    |The starting point of the program shell			| 
+|                   |controlc  |handles to avoid exitting with ctrl+c   			|
+|_getline           |_getchar  |reads characters from the STDIN_FILENO|
+|			        |_getline  |reads a line from the STDIN_FILENO and holds it in a buffer.|
+|built-ins          |envbuilt  |prints the enviroment var|
+|                   |_getenv   |gets the enviroment variable from environ|
+|execute.c          |execute   |executes the cmdpath given by the user|
+|memory_allocators.c|_malloc   |allocates memory using malloc.|
+|                   |_calloc   |allocates memory for an array of nmemb elements of size bytes each and returns a pointer to the allocated memory.|
+|                   |_realloc  |creates an array of integers.|
+|path_functions.c   |pathrunner|finds and runs the command given by the user|
+|                   |pathfinder|finds the path of environment var|
+|                   |pathgetter|extracts the full path of environment variable|
+|                   |pathcommand|concatenates the path with the command|
+|                   |count_dir  |counts the amount of directories.  |
+|shellhead          |library    |contains all the different prototype to run the shell program|
+|string_functions.c | _strdup   |returns a pointer to a newly allocated space in memory|
+|                   |_strcmp    |compares two strings|
+|                   |_strcpy    |writes the character c to stdout|
+|                   |_strcat    |concatenates two strings|
+|                   |_strlen    |counts the amount of characters in a string|
+|string_handler.c   |_strspn    |gets the length of a prefix substring.|
+|                   |_strcspn   |calculates the length of the initial segment of s which consists entirely of bytes not in reject.|
+|                   |_strpbrk   |searches a string for any of a set of bytes.|
+|                   | _strchr   |locates a character in a string.|
+|string_tokenizer.c |tokenizer  |splits a string into tokens and place them in a double pointer.|
+|                   |_strtok    |splits a string into words.|
+|                   |_strtok_r  |breaks a string into a sequence of zero or more nonempty tokens|
+|                   |count_words|counts the words in a string|
 
  - PID & PPID
  - Arguments
