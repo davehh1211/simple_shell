@@ -83,20 +83,32 @@ Follow the following instructions to get a copy of the program and run in your l
 
 ## Basic lifetime of a shell
 
-A shell does three main things in its lifetime.
-```
- - Initialize: In this step, a typical shell would read and execute its configuration files.
- These change aspects of the shell’s behavior.
 
- - Interpret: Next, the shell reads commands from stdin (which could be interactive, or a
- file) and executes them.
-	*	Read: Read the command from standard input.
-	*	Parse: Separate the command string into a program and arguments.
-	*	Execute: Run the parsed command.
+The main process or **init process**, or also called **parent process** creates more subsequent processes during execution. As soon as the shell starts, it prints a prompt and expects the user to type in a command to be executed.
 
- - Terminate: After its commands are executed, the shell executes a shutdown command
- frees up the memory, and terminates.
-```
+#### 1. **Reading.**
+
+When the user enters a command, the command is read by the function **_getlin** where stores the command line from the standard input in a buffer.
+
+#### 2. **Parsing**
+
+The shell splits this line with the **_strtok** function in the number of words entered until delimitator suh as **_\n\r\a\t**. These words or tokens are saved separately in an array of pointers and return each one to be executed.
+> Check the String_handler and the string_tokenizer files. 
+
+#### 3. **Executing**
+
+ The shell checks the command path comes without a path. If it is the case, it finds the path of the command in the Environment variable, and concatenates it with the path found. 
+ > Check the execute file
+
+Then compares it with any built-in function to prove its existence of such word as a command. 
+ > Check the execute file.
+
+On the other hand, if the command comes with a path e.g: “/bin/ls -l”, it just has to check its existence as previously explained on this page. When the shell checks both cases, it executes the command using the function execve and makes the child process in order to run it as intended.
+> Check the built-ins and string_functions file. 
+
+#### 4. **Displaying**.
+The program will execute the command with its subsequent arguments, displays all the content and returns 0 for the child process to close and free the memory allocated.
+
 ## Basic loop of a shell
 
 The basic logic of the program: the shell has a loop that handle commands in three steps:
@@ -122,11 +134,3 @@ The basic logic of the program: the shell has a loop that handle commands in thr
 - [Blog - Julian Franco Rua](https://medium.com/@julianfrancor9/what-happens-when-you-type-ls-l-in-the-shell-959b39049f1)
 
 - [Blog - Oscar David Henao Hidalgo](https://medium.com/@davelockly/what-happens-when-you-type-the-command-ls-l-b7dc459a868)
-
-
-Versioning
-We use SemVer for versioning. For the versions available, see the tags on this repository.
-
-
-License
-This project is licensed under the MIT License - see the LICENSE.md file for details
