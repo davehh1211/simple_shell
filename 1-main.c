@@ -32,11 +32,9 @@ int main(int __attribute__((unused))argc, char **argv)
 			write(STDOUT_FILENO, "$ ", 2);
 			lineptr = _getline();
 			iterations++;
-			if (lineptr == 0)
-			{
-				free(lineptr);
-				continue;
-			}
+			/*if (lineptr == 0)*/
+			/*free(lineptr);*/
+			/*continue;*/
 			args = tokenizer(lineptr, TOK_DELIMITER);
 			status = execute(args, iterations, argv[0]);
 			free(args);
