@@ -1,4 +1,5 @@
 #include "shellhead.h"
+
 /**
  * _strdup - returns a pointer to a newly allocated space in memory
  * @str: the size of the char
@@ -18,7 +19,7 @@ char *_strdup(char *str)
 		len++;
 	}
 	len++;
-	ar = malloc(len * sizeof(char));
+	ar = _malloc(len * sizeof(char));
 	if (ar == NULL)
 	{
 		return (NULL);
