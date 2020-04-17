@@ -13,21 +13,11 @@ int execute(char **command, int iterations, char *argv)
 	int status;
 	pid_t pid;
 
-	if (*command == NULL)
-	{
-		free(command[0]); /*marlon*/
-		return (127);
-	}
+	/*if (*command == NULL)*/
+		/*free(command[0]); marlon*/
+		/*return (127);*/
 	/*check if the command given is not the built-in env or printenv*/
-	if (strcmp("env", command[0]) == 0 || strcmp("printenv", command[0]) == 0)
-		envbuilt();
-	/*string comparison to check the command given is not the built-in exit*/
-	if (strcmp("exit", command[0]) == 0)
-	{
-		free(command[0]);
-		free(command);
-		exit(EXIT_SUCCESS);
-	}
+
 	pid = fork(); /* We will start a Child process with Fork */
 	if (pid == 0) /*Child process*/
 	{
