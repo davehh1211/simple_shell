@@ -116,6 +116,9 @@ The basic logic of the program: the shell has a loop that handle commands in thr
 	*	Read: Read the command from standard input. (getline())
 	*	Parse: Separate the command string into a program and arguments. (strtok())
 	*	Execute: Run the parsed command. (fork() & execve())
+## Flowchart - Shell
+
+![shell - Flowchart](https://user-images.githubusercontent.com/60364689/79600499-dd139600-80ac-11ea-870d-3459d7dfc3b7.png)
 
 
 ## Built with...
