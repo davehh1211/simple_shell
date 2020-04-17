@@ -13,10 +13,8 @@ int execute(char **command, int iterations, char *argv)
 	int status;
 	pid_t pid;
 
-	/*if (*command == NULL)*/
-		/*free(command[0]); marlon*/
-		/*return (127);*/
-	/*check if the command given is not the built-in env or printenv*/
+	if (*command == NULL)
+		return (1);
 
 	pid = fork(); /* We will start a Child process with Fork */
 	if (pid == 0) /*Child process*/

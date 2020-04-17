@@ -12,7 +12,7 @@ int pathrunner(char **command, int iterations, char *argv)
 	char *fullpath_name;
 	int status;
 
-
+	/*check if the command given is not the built-in env or printenv*/
 	if (strcmp("env", command[0]) == 0 || strcmp("printenv", command[0]) == 0)
 		envbuilt();
 	/*string comparison to check the command given is not the built-in exit*/
