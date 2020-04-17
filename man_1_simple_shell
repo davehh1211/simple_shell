@@ -1,4 +1,4 @@
-.TH "Simple Shell" "1" "16 April 2020" "Version 1.0" "Simple Shell Holberton"
+.TH "Simple Shell" "1" "17 April 2020" "Version 1.0" "Simple Shell Holberton"
 
 .SH NAME
 .B Simple_Shell 
@@ -45,26 +45,32 @@ At the moment of implementation of this version, options and builtins are not su
 \fBexit\fR 
 - It exits the program. The use of number will be installed for the next patch. 
 
-\fBINTERACTIONS\fR 
+.SH INTERACTIONS
+
 .br
-When the program is started, the machine shows a prompt symbol \fB($)\fR which means the program is ready to receive commands.
+
+-When the program is started, the machine shows a prompt symbol \fB($)\fR which means the program is ready to receive commands.
 .br
 
 \fB($)\fR
 .br
 
-The shell executes the command with arguments or without them, it will be executed after the ENTER key press. 
+The shell executes the command with arguments or without them. It will be executed after the ENTER key press. 
 
 .br
 \fB/$ bin/ls -al\fR or \fB/$ ls -al\fR - Will show the list of files and hidden files contained inside the current directory. The argument "-la" will print hidden files in long format (presenting specific details like permissions and users).
-.RE
+
+\fBCtrl+c\fR - The program will not stop when the **ctrl+C** combination is pressed. The feature is disable.
+.br
+
+\fBctrl+d\fR - The key combination ctrl+d will close the program properly with the correct memory free of the buffer designated for the program.
 
 .SH SEE ALSO
 .B Simple_Shell(1) bash(1) fork(2), signal(2), wait(2), execve(2), exit(3), stat(2), write(2), isattty(3), opendir(3),
-.SH BUGS
-No known bugs. Report bugs for coming fixhot to 
+.SH BUGS AND CONTRIBUTIONS
+No known bugs. Report bugs for coming fixhot and contributions to (https://github.com/julianfrancor/simple_shell)
 
 .SH AUTHORS
-Julian Franco Rua <julianfrancor@gmail.com>
+Julian Franco Rua (julianfrancor@gmail.com)
 .br
-Oscar David Henao Hidalgo <davehh1211@gmail.com>
+Oscar David Henao Hidalgo (davehh1211@gmail.com)
