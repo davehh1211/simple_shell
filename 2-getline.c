@@ -70,8 +70,7 @@ char *_getline(void)
 			buffer = _realloc(buffer, buffsize, buffsize_new);
 			buffsize = buffsize_new;
 			if (!buffer)
-			{
-				perror("$ Error reallocating memory");
+			{ perror("$ Error reallocating memory");
 				free(buffer);/*-------*/
 				exit(EXIT_FAILURE); }
 		}
