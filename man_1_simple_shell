@@ -1,76 +1,70 @@
-.TH SIMPLE_SHELL 1
+.TH "Simple Shell" "1" "16 April 2020" "Version 1.0" "Simple Shell Holberton"
+
 .SH NAME
-Simple_Shell - program designed to read commands typed by a user and execute appropriate programs in response to those commands.
+.B Simple_Shell 
+.br
+Program designed to read commands typed by a user and execute appropriate programs in response to those commands.
 .SH SYNOPSIS
-\fBint Simple_Shell [options] [command_string | file]\fR
+\fBhsh [command_string] [arguments]\fR
 
 .SH DESCRIPTION
-\fB Simple_Shell\fR is an sh-compatible command language interpreter  that  executes  commands  read  from the
-standard input or from a file.  Bash also incorporates  useful  features  from  the  Korn and shells (ksh and csh).
+\fB Simple_Shell\fR is a special-purpose program designed to read commands typed by a user and 
+execute appropriate programs in response to those commands. Such a program is sometimes known 
+as a command interpreter.
 
-\fB Simple_Shell\fR is intended to be a conformant  implementation  of  the Shell and Utilities portion of the
-IEEE POSIX specification (IEEE Standard 1003.1). Bash can be configured to be POSIX-conformant by default.
+This shell reads the command typed by the user through interactive or non-interactive mode. This shell will interpret 
+and execute the command as the user intended. 
+.br
+.SH SUPPORTED FEATURES
+This is a simple version of the shell. It does not support piping, aliases, file creation, flags and other functionalities such as the command separator (;). This will be implemented in the upcoming versions of the simple shell.
+
+.SH EXAMPLES
+For the execution of any command, the shell will accept two modes as previously described. See the following modes for further information. 
+.SH MODES
+.br
+\fBNON-INTERACTIVE\fR - The user doesn’t interact with the shell, it is through an automated process e.g. scripts. This mode is available for this version of the shell. To execute this mode type \fBecho "/bin/ls -la *.c" | ./hsh\fR
+
+\fBINTERACTIVE\fR - The user interacts with the machine through a keyboard. This mode is executed by typing only de command desired e.g. \fB"ls"\fR or with its full path \fB"/bin/ls -la"\fR. 
 
 .SH OPTIONS
-All of the  single-character shell options documented  in  the  description  of the set builtin command can be used
-as options when the shell is invoked. In addition, bash interprets the following options when it is invoked:
-
-WE GONNA PUT ALL THE BUILTIN FUNCTIONS DOWN BELLOW ------->
-
-.RE
-
-.B The Conversion Specifier
-.RS 3
-The following characters are what \fB_printf()\fR is able to print.
-
-.B i, d
-.RS 6
-The \fIint\fR argument is signed decimal notation.
-.RE
-
-.B c
-.RS 6
-The \fIint\fR argument is converted to char, and the resulting character is printed by the function.
-.RE
-
-.B s
-.RS 6
-The \fIconst char *\fR argument is expected to be a pointer to an array of character type (pointer to a string).  Characters from the array are written.
-.RE
-
-.B r
-.RS 6
-The \fIconst char *\fR argument is expected to be a pointer to an array of character type. Characters from the array are written in reverse
-.RE
-
-.SH EXAMPLE
-.RS 3
-Print a sentence using conversion specifiers:
-.RE
-
-.RS 8
-#include "holberton.h"
+At the moment of implementation of this version, options and builtins are not supported completely. However, for coming updates the following builts-ins will be implemented:
 .br
-int main (void)
-.br
-{
-.br
-.RS 8
-_printf("%s" "implicit declaration of main function");
-.br
-return (0);
-.RE
-.br
-}
-.RE
 
-.RS 1
-Output : "implicit declaration of main function"
+\fBcd\fR  
+- Directories will be changed by executing this built-in. It will interact according to the different parameters given by the user.
+.br
+
+\fBhelp\fR 
+- It presents "help" for the user when it is requested. It will shows details related to other commands or built-ins.
+.br
+
+\fBenv\fR 
+- It will show the environment where the process is taking place. This built-in is already working in this version.
+.br
+
+\fBexit\fR 
+- It exits the program. The use of number will be installed for the next patch. 
+
+\fBINTERACTIONS\fR 
+.br
+When the program is started, the machine shows a prompt symbol \fB($)\fR which means the program is ready to receive commands.
+.br
+
+\fB($)\fR
+.br
+
+The shell executes the command with arguments or without them, it will be executed after the ENTER key press. 
+
+.br
+\fB/$ bin/ls -al\fR or \fB/$ ls -al\fR - Will show the list of files and hidden files contained inside the current directory. The argument "-la" will print hidden files in long format (presenting specific details like permissions and users).
 .RE
 
 .SH SEE ALSO
-.B Simple_Shell(1)
+.B Simple_Shell(1) bash(1) fork(2), signal(2), wait(2), execve(2), exit(3), stat(2), write(2), isattty(3), opendir(3),
 .SH BUGS
-No known bugs.
-.SH AUTHOR
-Julian Franco & Oscar Henao
+No known bugs. Report bugs for coming fixhot to 
+
+.SH AUTHORS
+Julian Franco Rua <julianfrancor@gmail.com>
+.br
+Oscar David Henao Hidalgo <davehh1211@gmail.com>
