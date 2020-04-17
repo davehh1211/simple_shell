@@ -37,6 +37,12 @@ Follow the following instructions to get a copy of the program and run in your l
 
  - Run with debugger
  > `valgrind --leak-check=full --show-leak-kinds=all ./executable_name`
+ 
+ - Test contributions
+ 
+ > - [GitHub - Contribution Julian Franco Rua](https://github.com/julianfrancor/test_suite-simple_shell/tree/update-task_18)
+ 
+ > - [GitHub - contribution Oscar David Henao](https://github.com/davehh1211/test_suite-simple_shell/tree/update-task_07)
 
 
 ## General Information and contents
