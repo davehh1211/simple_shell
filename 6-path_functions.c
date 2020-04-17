@@ -12,6 +12,16 @@ int pathrunner(char **command, int iterations, char *argv)
 	char *fullpath_name;
 	int status;
 
+
+	if (strcmp("env", command[0]) == 0 || strcmp("printenv", command[0]) == 0)
+		envbuilt();
+	/*string comparison to check the command given is not the built-in exit*/
+	if (strcmp("exit", command[0]) == 0)
+	{
+		free(command[0]);
+		free(command);
+		exit(EXIT_SUCCESS);
+	}
 	fullpath_name = pathfinder(command[0]);
 	/*if the command couldn't be found, or pathfinder failed to find the path*/
 	if (fullpath_name == NULL)
